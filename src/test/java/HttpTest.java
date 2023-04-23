@@ -3,6 +3,8 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class HttpTest {
 
@@ -20,8 +22,22 @@ public class HttpTest {
     }
 
     public static void main(String[] args) throws IOException {
-        String response = new HttpTest().run("https://www.google.com");
-//        System.out.println(response);
+        System.out.println(parseTarget("https://vk.com/audios262614728"));
+    }
+
+    public static String parseTarget(String url) {
+        Pattern p = Pattern.compile("com/audios((-|)[\\d]+)");
+        Matcher matches = p.matcher(url);
+        if (matches.find()) {
+            return matches.group(1);
+        }
+
+        p = Pattern.compile("com/(.+)");
+        matches = p.matcher(url);
+        if (matches.find()) {
+            return matches.group(1);
+        }
+        return null;
     }
 
 }
