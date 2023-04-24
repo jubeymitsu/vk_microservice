@@ -1,3 +1,4 @@
+import com.stomprf.Main;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -22,7 +23,9 @@ public class HttpTest {
     }
 
     public static void main(String[] args) throws IOException {
-        System.out.println(parseTarget("https://vk.com/audios262614728"));
+        Main main = new Main();
+        main.loadDefaultCookies();
+        Main.defaultCookies.entrySet().forEach(System.out::println);
     }
 
     public static String parseTarget(String url) {

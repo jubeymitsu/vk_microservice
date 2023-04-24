@@ -1,0 +1,18 @@
+java -jar ./vkmd-cli.jar https://vk.com/audios262614728 \
+  --vk-cookies=/Users/macbookpro/Desktop/vkmd-cli/cookies.txt \
+--vk-uid=718258940 \
+--save-dir=/Users/macbookpro/Desktop/vkmd-cli/ \
+--ffmpeg /Users/macbookpro/Desktop/ffmpeg/ffmpeg
+> Grabbing from "262614728"...
+Page: 1, Total links: 100
+[ERROR 2023-04-23 23:35:35 +0300] INVALID JSON: JSONArray[0] not found.
+[ERROR 2023-04-23 23:35:36 +0300] INVALID JSON: JSONArray[0] not found.
+[ERROR 2023-04-23 23:35:37 +0300] INVALID JSON: JSONArray[0] not found.
+[ERROR 2023-04-23 23:35:39 +0300] INVALID JSON: JSONArray[0] not found.
+[ERROR 2023-04-23 23:35:40 +0300] INVALID JSON: JSONArray[0] not found.
+[ERROR 2023-04-23 23:35:41 +0300] INVALID JSON: JSONArray[0] not found.
+[ERROR 2023-04-23 23:35:42 +0300] INVALID JSON: JSONArray[0] not found.
+[ERROR 2023-04-23 23:35:43 +0300] INVALID JSON: JSONArray[0] not found.
+[ERROR 2023-04-23 23:35:44 +0300] INVALID JSON: JSONArray[0] not found.
+[ERROR 2023-04-23 23:35:45 +0300] INVALID JSON: JSONArray[0] not found.
+[ERROR 2023-04-23 23:35:46 +0300] INVALID JSON: JSONArray[0] not found.
