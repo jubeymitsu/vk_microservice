@@ -24,7 +24,7 @@ public class HttpTest {
 
     public static void main(String[] args) throws IOException {
         Main main = new Main();
-        main.loadDefaultCookies();
+//        main.loadDefaultCookies();
         Main.defaultCookies.entrySet().forEach(System.out::println);
     }
 

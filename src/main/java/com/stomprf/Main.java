@@ -20,17 +20,15 @@ public class Main {
     public static void main(String[] args) throws IOException {
         Main main = new Main();
         main.loadVkCookies("src/main/resources/cookies/cookies.txt");
-        main.loadDefaultCookies();
+
+        VkClient client = new VkClient(vkCookies);
+
+        System.out.println(client.pythonVkRequest());
 
         System.out.println(vkCookies.get("remixsid"));
-        VkClient client = new VkClient(vkCookies, defaultCookies);
-//        String httpResult = client.fromAudio(Integer.parseInt("718258940"), 0, true);
-        String httpResult = client.fromAudio(718258940,0, true);
-        BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/ParseResult.html"));
-        System.out.println("Result -> " + httpResult);
-        writer.write(httpResult);
-        writer.close();
-
+//        VkClient client = new VkClient(vkCookies);
+//
+//        String httpResult = client.fromAudio(262614728,0, true);
 //        Elements elements = parseHttpResult(httpResult, ".AudioPlaylistRoot.AudioBlock__content .audio_item");
 //
 //        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("src/main/resources/ParseResult.html"));) {
@@ -77,11 +75,6 @@ public class Main {
         }
     }
 
-    public void loadDefaultCookies() throws IOException {
-        HashMap<String, String> result =
-                new ObjectMapper().readValue(new FileInputStream("src/main/resources/cookies/defaultCookies.json"), HashMap.class);
-        defaultCookies = new HashMap<>(result);
-    }
 
 
 
