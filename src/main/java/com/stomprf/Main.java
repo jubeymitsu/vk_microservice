@@ -1,18 +1,23 @@
 package com.stomprf;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 public class Main {
 
     public static Map<String, String> vkCookies = new HashMap<>();
     public static Map<String, String> defaultCookies;
+    public final static String PATH_TO_PAYLOAD = "src/main/resources/payload/payload.json";
 
     public Main() throws IOException {
     }
@@ -20,12 +25,19 @@ public class Main {
     public static void main(String[] args) throws IOException {
         Main main = new Main();
         main.loadVkCookies("src/main/resources/cookies/cookies.txt");
+        System.out.println(vkCookies.get("remixsid"));
 
         VkClient client = new VkClient(vkCookies);
+        String payload = client.pythonVkRequest().replace("<!--", "");
 
-        System.out.println(client.pythonVkRequest());
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("src/main/resources/payload/payload.json"))) {
+            bufferedWriter.write(payload);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        new VkMusic().parseJsonPlaylist(Path.of(PATH_TO_PAYLOAD));
 
-        System.out.println(vkCookies.get("remixsid"));
+
 //        VkClient client = new VkClient(vkCookies);
 //
 //        String httpResult = client.fromAudio(262614728,0, true);
@@ -37,6 +49,8 @@ public class Main {
 //            e.printStackTrace();
 //        }
     }
+
+
 
     public static Elements parseHttpResult(String hhtpString,String selector){
         Document doc = Jsoup.parse(hhtpString);

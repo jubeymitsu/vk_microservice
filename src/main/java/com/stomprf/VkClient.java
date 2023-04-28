@@ -27,6 +27,7 @@ public class VkClient {
 
     public VkClient(Map<String, String> vkCookies) {
         httpClient = createHttpClient(vkCookies);
+        System.out.println("Client created. " + httpClient.cookieJar());
     }
 
     private OkHttpClient createHttpClient(final Map<String, String> vkCookies) {
@@ -89,7 +90,7 @@ public class VkClient {
                 .add("is_layer", "0")
                 .add("owner_id", "262614728")
                 .add("section", "search")
-                .add("q", "Boss up")
+                .add("q", "Yeat Boss up")
                 .build();
 
 
@@ -98,7 +99,6 @@ public class VkClient {
                 .post(formBody)
                 .build();
 
-        System.out.println("Result");
         Call call = httpClient.newCall(request);
         Response response = call.execute();
         return response.body().string();
