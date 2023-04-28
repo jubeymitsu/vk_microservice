@@ -88,8 +88,4 @@ public class Main {
             vkCookies.put(cookie[0].trim(), cookie[1].trim());
         }
     }
-
-
-
-
 }
